@@ -1,0 +1,6 @@
+﻿  Source.cpp
+D:\Програмування Наташа\New projects November 2019\Lesson 22 gibush\Class work\14.02.19\14.02.19\Source.cpp(240): warning C4244: '-=': conversion from 'double' to 'int', possible loss of data
+D:\Програмування Наташа\New projects November 2019\Lesson 22 gibush\Class work\14.02.19\14.02.19\Source.cpp(245): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+D:\Програмування Наташа\New projects November 2019\Lesson 22 gibush\Class work\14.02.19\14.02.19\Source.cpp(288): warning C4244: '-=': conversion from 'double' to 'int', possible loss of data
+D:\Програмування Наташа\New projects November 2019\Lesson 22 gibush\Class work\14.02.19\14.02.19\Source.cpp(293): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+  14.02.19.vcxproj -> D:\Програмування Наташа\New projects November 2019\Lesson 22 gibush\Class work\14.02.19\x64\Debug\14.02.19.exe
