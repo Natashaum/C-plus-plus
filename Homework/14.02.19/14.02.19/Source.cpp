@@ -69,6 +69,7 @@ int Menu() {
 	cout << " Press 3 - to \"Exit\"!" << endl;
 	cin >> choice;
 	cout << " Your choice is: " << choice << endl;
+	cout << "====================================================" << endl;
 
 	if (choice == 1) {
 		cout << " \"Enter your card number\" " << endl;
@@ -78,9 +79,11 @@ int Menu() {
 	}
 	else if (choice == 3) {
 		cout << " \"Have a nice day! Bye!\"" << endl;
+		cout << "====================================================" << endl;
 	}
 	else {
 		cout << " \"You have done incorrect choice!\"\n  \t \"Try again\"" << endl;
+		cout << "====================================================" << endl;
 	}
 
 	return choice;
@@ -146,7 +149,7 @@ bool CheckPhoneNum(int arr[], int phoneNum[])
 		if (arr[i] != phoneNum[i])
 		{
 			return false;
-			
+
 		}
 	}
 	return true;
@@ -214,7 +217,7 @@ int main() {
 			FillCardNum(arr1);
 			PrintCardNum(arr1);
 			cout << endl;
-
+			cout << "====================================================" << endl;
 			for (int i = 0; i < 4; i++)
 			{
 				if (CheckCard(arr1, cards[i]))  // (CheckCard(arr1, cards[i])) - ф-я перевірки номерів карток; cards[i] - значення однієї з карток;
@@ -226,42 +229,61 @@ int main() {
 
 			if (numberCard != -1)
 			{
-				FillPass(arr2);
-				PrintPass(arr2);
-				cout << endl;
+				int counter = 0;
 
-				if (CheckPassword(arr2, passwords[numberCard]))  // (CheckCard(arr2, passwords[numberCard])) - ф-я перевірка паролів; [numberCard] - порядковий номер одного із масивів  карток;
+				for (;;)
 				{
-					cout << " Your balance is: " << balances[numberCard] << endl;
-					cout << "   Enter:\n   1 - To Withdraw Money! (-)\n   2 - To Refill the Account! (+)\n   3 - To Exit:" << endl;
-					cin >> choice;
-					cout << "Enter the Sum: " << endl;
-					cin >> sum;
-					if (choice == 1)
+					FillPass(arr2);
+					PrintPass(arr2);
+					cout << endl;
+					cout <<"====================================================" << endl;
+
+					if (CheckPassword(arr2, passwords[numberCard]))  // (CheckCard(arr2, passwords[numberCard])) - ф-я перевірка паролів; [numberCard] - порядковий номер одного із масивів  карток;
 					{
-						balances[numberCard] -= sum;
-						cout << "Your current balance is: " << balances[numberCard] << endl;
+						cout << " Your balance is: " << balances[numberCard] << endl;
+						cout << "====================================================" << endl;
+						cout << "   Enter:\n   1 - To Withdraw Money! (-)\n   2 - To Refill the Account! (+)\n   3 - To Exit:" << endl;
+						cout << "====================================================" << endl;
+						cin >> choice;
+						cout << "Enter the Sum: " << endl;
+
+						cin >> sum;
+						cout << "====================================================" << endl;
+
+						if (choice == 1)
+						{
+							balances[numberCard] -= sum;
+							cout << "Your current balance is: " << balances[numberCard] << endl;
+							cout << "====================================================" << endl;
+						}
+						else if (choice == 2)
+						{
+							balances[numberCard] += sum;
+							cout << "Your current balance is: " << balances[numberCard] << endl;
+							cout << "====================================================" << endl;
+						}
+						break;
 					}
-					else if (choice == 2)
+					else
 					{
-						balances[numberCard] += sum;
-						cout << "Your current balance is: " << balances[numberCard] << endl;
+						counter++;
+						cout << "Your password is incorrect!!!\n\t\"Try again!\"\n" << endl;
+
+					}
+					if (counter == 3)
+					{
+						cout << "Your card is blocked!" << endl;
+						break;
 					}
 				}
-				else
-				{
-					cout << "Your password is incorrect!!!\n\t\"Try again!\"" << endl;
-				}
 			}
-			else
-			{
-				cout << "Card number is incorrect!!! \n\t\"Try again\"" << endl;
-			}
+
 		}
 		else if (choice == 2) {
 			FillPhoneNum(arr3);
 			PrintPhoneNum(arr3);
 			cout << endl;
+			cout << "====================================================" << endl;
 
 			for (int i = 0; i < 4; i++)
 			{
@@ -274,37 +296,57 @@ int main() {
 
 			if (indexPhoneNum != -1)
 			{
-				FillPass(arr2);
-				PrintPass(arr2);
-				cout << endl;
+				int counter = 0;
 
-				if (CheckPassword(arr2, passwords[indexPhoneNum]))
+				for (;;)
 				{
-					cout << "Your password is correct!\n Your balance is: " << balances[indexPhoneNum] << endl;
-					cout << "   Enter:\n   1 - To Withdraw Money! (-)\n   2 - To Refill the Account! (+)\n   3 - To Exit:" << endl;
-					cin >> choice;
-					cout << "Enter sum: " << endl;;
-					cin >> sum;
-					if (choice == 1)
+					FillPass(arr2);
+					PrintPass(arr2);
+					cout << endl;
+					cout << "====================================================" << endl;
+
+					if (CheckPassword(arr2, passwords[indexPhoneNum]))
 					{
-						balances[indexPhoneNum] -= sum;
-						cout << "Your current balance is: " << balances[indexPhoneNum] << endl;
+						cout << " Your balance is: " << balances[indexPhoneNum] << endl;
+						cout << "====================================================" << endl;
+						cout << "   Enter:\n   1 - To Withdraw Money! (-)\n   2 - To Refill the Account! (+)\n   3 - To Exit:" << endl;
+						cout << "====================================================" << endl;
+						cin >> choice;
+						cout << "Enter sum: " << endl;;
+						cin >> sum;
+						cout << "====================================================" << endl;
+						if (choice == 1)
+						{
+							balances[indexPhoneNum] -= sum;
+							cout << "Your current balance is: " << balances[indexPhoneNum] << endl;
+							cout << "====================================================" << endl;
+						}
+						else if (choice == 2)
+						{
+							balances[indexPhoneNum] += sum;
+							cout << "Your current balance is: " << balances[indexPhoneNum] << endl;
+							cout << "====================================================" << endl;
+						}
+						break;
 					}
-					else if (choice == 2)
+					else
 					{
-						balances[indexPhoneNum] += sum;
-						cout << "Your current balance is: " << balances[indexPhoneNum] << endl;
+						counter++;
+						cout << "Your password is incorrect!!!\n\t\"Try again!\"" << endl;
 					}
-				}
-				else
-				{
-					cout << "Your password is incorrect!!!\n\t\"Try again!\"" << endl;
+
+					if (counter == 3)
+					{
+						cout << "Your card is blocked!" << endl;
+						break;
+					}
 				}
 			}
 			else
 			{
 				cout << "Phone number is incorrect!!!\n\t\"Try again!\"" << endl;
 			}
+			cout << "====================================================" << endl;
 		}
 		system("pause");
 		system("cls");
