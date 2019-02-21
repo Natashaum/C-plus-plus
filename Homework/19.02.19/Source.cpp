@@ -83,13 +83,7 @@ int Menu() {
 	cin >> choice;
 	return choice;
 }
-//void Sum( int *pA, int *pB, int *pS) {
-//	cout << "Enter the first number: " << endl;
-//	cin >> *pA;
-//	cout << "Enter the secont number: " << endl;
-//	cin >> *pB;
-//	*pS = *pA + *pB;
-//}
+
 void Sum(double* pA, double* pB, double* pS) {
 	cout << "Enter the first number: " << endl;
 	cin >> *pA;
@@ -98,13 +92,7 @@ void Sum(double* pA, double* pB, double* pS) {
 	*pS = *pA + *pB;
 }
 
-//void Risn(int* pA, int* pB, int* pR) {
-//	cout << "Enter the first number: " << endl;
-//	cin >> *pA;
-//	cout << "Enter the secont number: " << endl;
-//	cin >> *pB;
-//	*pR = *pA -*pB;
-//}
+
 void Risn(double* pA, double* pB, double* pR) {
 	cout << "Enter the first number: " << endl;
 	cin >> *pA;
@@ -113,13 +101,7 @@ void Risn(double* pA, double* pB, double* pR) {
 	*pR = *pA - *pB;
 }
 
-//void Dob(int* pA, int* pB, int* pD) {
-//	cout << "Enter the first number: " << endl;
-//	cin >> *pA;
-//	cout << "Enter the secont number: " << endl;
-//	cin >> *pB;
-//	*pD = *pA * *pB;
-//}
+
 void Dob(double* pA, double* pB, double* pD) {
 	cout << "Enter the first number: " << endl;
 	cin >> *pA;
@@ -128,13 +110,7 @@ void Dob(double* pA, double* pB, double* pD) {
 	*pD = *pA * *pB;
 }
 
-//void Chast(int* pA, int* pB, int* pCh) {
-//	cout << "Enter the first number: " << endl;
-//	cin >> *pA;
-//	cout << "Enter the secont number: " << endl;
-//	cin >> *pB;
-//	*pCh = *pA / *pB;
-//}
+
 void Chast(double *pA, double *pB, double *pCh) {
 	cout << "Enter the first number: " << endl;
 	cin >> *pA;
