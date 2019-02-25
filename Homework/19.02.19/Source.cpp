@@ -83,8 +83,8 @@ int Menu() {
 	cin >> choice;
 	return choice;
 }
-
-void Sum(double* pA, double* pB, double* pS) {
+template <typename T>
+void Sum(T * pA, T* pB, T* pS) {
 	cout << "Enter the first number: " << endl;
 	cin >> *pA;
 	cout << "Enter the secont number: " << endl;
@@ -92,8 +92,8 @@ void Sum(double* pA, double* pB, double* pS) {
 	*pS = *pA + *pB;
 }
 
-
-void Risn(double* pA, double* pB, double* pR) {
+template <typename T>
+void Risn(T* pA, T* pB, T* pR) {
 	cout << "Enter the first number: " << endl;
 	cin >> *pA;
 	cout << "Enter the secont number: " << endl;
@@ -101,8 +101,8 @@ void Risn(double* pA, double* pB, double* pR) {
 	*pR = *pA - *pB;
 }
 
-
-void Dob(double* pA, double* pB, double* pD) {
+template <typename T>
+void Dob(T* pA, T* pB, T* pD) {
 	cout << "Enter the first number: " << endl;
 	cin >> *pA;
 	cout << "Enter the secont number: " << endl;
@@ -110,8 +110,8 @@ void Dob(double* pA, double* pB, double* pD) {
 	*pD = *pA * *pB;
 }
 
-
-void Chast(double *pA, double *pB, double *pCh) {
+template <typename T>
+void Chast(T* pA, T* pB, T* pCh) {
 	cout << "Enter the first number: " << endl;
 	cin >> *pA;
 	cout << "Enter the secont number: " << endl;
@@ -121,18 +121,18 @@ void Chast(double *pA, double *pB, double *pCh) {
 
 
 int main() {
-	double dob = 0;
-	double sum = 0;
-	double risn = 0;
-	double chast = 0;
-	double a = 0;
-	double b = 0; 
-	double* pA = &a;
-	double* pB = &b;
-	double* pS = &sum;
-	double* pR = &risn;
-	double* pD = &dob;
-	double* pCh = &chast;
+	int dob = 0;
+	int sum = 0;
+	int risn = 0;
+	int chast = 0;
+	int a = 0;
+	int b = 0; 
+	int* pA = &a;
+	int* pB = &b;
+	int* pS = &sum;
+	int* pR = &risn;
+	int* pD = &dob;
+	int* pCh = &chast;
 	
 
 
