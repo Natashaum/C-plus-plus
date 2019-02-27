@@ -193,7 +193,7 @@ void PrintArr(int* pArr, int size) {
 	}
 }
 
-bool IsElementInArr(int* pArr, int el)  // ф-я для перевірки наявності 2х одинакових елементів в масиві;
+bool IsElementInArr(int* pArr, int el)  // ф-я для перевірки наявності 2х одинакових елементів в масиві; el - значення яке ми перевіряємо чи є в масиві
 {
 	for (int i = 0; i < 5; i++)
 	{
@@ -377,8 +377,9 @@ int main() {
 		arr3[i] = pArr2[i - 5];
 	}
 	PrintArr(pArr3, 10);
+	cout << endl;
 
-	//for (int i = 0; i < 10; i++) {
+	for (int i = 0; i < 10; i++) {
 
 	//}
 	system("pause");
