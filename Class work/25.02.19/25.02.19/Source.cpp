@@ -125,7 +125,7 @@ int main() {
 }*/
 // 3. Написати функцію, яка замінює всі від’ємні елементи переданого масиву нулями.Примітка!Функція повинна повертати ссилку на відємний елемент
 
-# include <iostream>
+/*# include <iostream>
 # include <ctime>
 using namespace std;
 
@@ -156,6 +156,46 @@ int main() {
 	PrintArr(arr);
 	cout << endl;
 	Replace(arr);
+	cout << endl;
+
+	system("pause");
+	return 0;
+}*/
+
+// 3. Написати функцію, яка замінює всі від’ємні елементи переданого масиву нулями.Примітка!Функція повинна повертати ссилку на відємний елемент
+
+# include <iostream>
+using namespace std;
+
+void FillArr(int arr[]) {
+	cout << " Enter the elements of array: " << endl;
+	for (int i = 0; i < 10; i++) {
+		cin >> arr[i];
+	}
+}
+void PrintArr(int arr[]) {
+	for (int i = 0; i < 10; i++)
+		cout << arr[i] << "    ";
+}
+void Replace(int arr[], int& minusArr) {
+	for (int i = 0; i < 10; i++) {
+		if (arr[i] < 0) {
+			cout << 0 << "     ";
+			minusArr = arr[i] ;
+		}
+		else {
+			cout << arr[i] << "    ";
+		}
+	}
+}
+int main() {
+	int minusArr = 0;
+	int arr[10];
+
+	FillArr(arr);
+	PrintArr(arr);
+	cout << endl;
+	Replace(arr, minusArr);
 	cout << endl;
 
 	system("pause");
