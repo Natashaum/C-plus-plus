@@ -181,7 +181,8 @@ void Replace(int arr[], int& minusArr) {
 	for (int i = 0; i < 10; i++) {
 		if (arr[i] < 0) {
 			cout << 0 << "     ";
-			minusArr = arr[i] ;
+			minusArr = arr[i];
+			cout << &arr[i] << "   ";
 		}
 		else {
 			cout << arr[i] << "    ";
