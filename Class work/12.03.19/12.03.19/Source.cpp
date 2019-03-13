@@ -154,10 +154,10 @@ void AddNewRow (int**& arr, int rows, int cols, int index, int* newRow) {
 			newarr[i][j] = arr[i][j];
 		}
 	}
-	//newarr[index] = newRow;
+	
 	for (int j = 0; j < cols; j++)
 	{
-		newarr[index][j] = newRow[j];
+		newarr[index][j] = newRow[j];   // index - новий рядок  який ми хочемо добавити 
 	}
 
 	for (int i = index + 1; i < rows + 1; i++) {
@@ -180,7 +180,6 @@ int main() {
 	cout << "Enter number of cols:  ";
 	cin >> cols;
 
-	//int *arrRow = new int [cols];
 	int** arr = new int* [rows];  // створюємо посилання на масив вказівників, який буде зберігати саме вказівники
 
 	Create(arr, rows, cols);
@@ -202,9 +201,6 @@ int main() {
 	Print(arr, rows, cols);
 	cout << endl;
 	cout << "================ Add index row =============" << endl;
-
-	//int* newRow2 = new int[cols];
-	//FillNewArr(newRow2, cols);
 
 	AddNewRow(arr, rows, cols, index, newRow);
 	rows++;
