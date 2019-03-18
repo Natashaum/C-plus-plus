@@ -19,8 +19,8 @@ void Create(int**& arr, int rows, int cols) {
 		arr[i] = new int[cols];
 	}
 }
-
-void Delete(int**& arr, int rows) {   // за допомогою цього масиву ми видаляємо масиви на які вказує масив вказівників
+//  Ф-я видалення масивів на які вказує масив вказівників
+void Delete(int**& arr, int rows) {   
 
 	for (int i = 0; i < rows; i++) {
 		delete[] arr[i];
@@ -57,7 +57,7 @@ void FillNewArr(int*& arr, int cols) { //  ф-я створення нового одновимірного ма
 void AddFirstRow(int**& arr, int* newRow, int rows, int cols) {
 	int** newarr = new int* [rows + 1];  // створюємо посилання на  новий масив вказівників, який буде зберігати саме вказівники (на один ряд більший)
 	Create(newarr, rows + 1, cols);   //   створення нового масиву на один рядок більшого
-	//newarr[0] = newRow;
+	//newarr[0] = newRow;  // це один з варіантів присвоєння, але краще робити так як записано нижче, через цикл 
 	for (int j = 0; j < cols; j++)
 	{
 		newarr[0][j] = newRow[j];
@@ -73,9 +73,10 @@ void AddFirstRow(int**& arr, int* newRow, int rows, int cols) {
 }
 
 //  5.  Функція видалення з матриці рядка за вказаним номером
-void IndexDelete(int**& arr, int rows, int cols, int index) {
+void IndexDelete(int**& arr, int rows, int cols) {
 	int** newarr = new int* [rows - 1];
 	Create(newarr, rows - 1, cols);
+	int index;
 	cout << " Enter index of a row you want to delete:   ";
 	cin >> index;
 	for (int i = 0; i < index; i++) {
@@ -114,10 +115,81 @@ void AddNewRow(int**& arr, int rows, int cols, int index, int* newRow) {
 			newarr[i][j] = arr[i - 1][j];
 		}
 	}
+	Delete(arr, rows);
 	delete[] arr;
 	arr = newarr;
 }
+void FillNewColArr(int*& arr, int cols) { //  ф-я створення нового одновимірного масиву на одну колонку більшого, який ми потім будемо додавати у двовимірний масив
+	for (int i = 0; i < cols; i++)
+	{
+		arr[i] = rand() % 10;
+	}
+}
+//  7.    Функція доповнення матриці новим стовпчиком
+void AddColumn(int**& arr, int* newCol, int rows, int cols) {
+	int** newarr = new int* [rows];
+	Create(newarr, rows, cols+1);   //   створення нового масиву на один колонку більшого
+	for (int i = 0; i < rows; i++) {
+		for (int j = 0; j < cols; j++) {
+			newarr[i][j] = arr[i][j];
+		}
+	}
+	for (int i = 0; i < rows; i++) {
+		newarr[i][cols] = newCol[i];
+	}
+	
+	Delete(arr, rows);
+	delete[] arr;
+	arr = newarr;
+}
+//   8. Функція видалення з матриці стовпця за вказаним номером
 
+void IndexColDel(int**& arr, int rows, int cols) {
+	int** newarr = new int* [rows];
+	Create(newarr, rows, cols-1);
+	int index;
+	cout << " Enter index of a col you want to delete:   ";
+	cin >> index;
+	for (int i = 0; i < rows; i++) {
+		for (int j = 0; j < index; j++) {
+			newarr[i][j] = arr[i][j];
+		}
+	}
+	for (int i = 0; i < rows; i++) {
+		for (int j = index; j < cols-1; j++) {
+			newarr[i][j] = arr[i][j+1];
+		}
+	}
+	Delete(arr, rows);
+	delete[] arr;
+	arr = newarr;
+}
+//  9. Функція вставки нового стовпця за вказаним номером
+void AddIndexCol(int**& arr, int* newCol, int rows, int cols) {
+	int** newarr = new int* [rows];
+	Create(newarr, rows, cols + 1);
+	int index;
+	cout << " Enter index of a column you want to add:   ";
+	cin >> index;
+	for (int i = 0; i < rows; i++) {
+		for (int j = 0; j < index; j++) {
+			newarr[i][j] = arr[i][j];
+		}
+	}
+	for (int i = 0; i < rows; i++)
+	{
+		newarr[i][index] = newCol[i];   // index - нови колонка  яку ми хочемо добавити 
+	}
+	for (int i = 0; i < rows; i++) {
+		for (int j = index + 1; j < cols + 1; j++) {
+			newarr[i][j] = arr[i][j - 1];
+		}
+	}
+
+	Delete(arr, rows);
+	delete[] arr;
+	arr = newarr;
+}
 int main() {
 
 	srand(unsigned(time(NULL)));
@@ -145,16 +217,37 @@ int main() {
 	Print(arr, rows, cols);
 	cout << endl;
 	cout << "================ Delete index row =============" << endl;
-	IndexDelete(arr, rows, cols, index);
+	IndexDelete(arr, rows, cols);
 	rows--;
 	Print(arr, rows, cols);
 	cout << endl;
 	cout << "================ Add index row =============" << endl;
+	int* newRow2 = new int[cols];  // створюємо посилання на новий одновимірний масив, який потім будемо добавляти в динамічний 2х вимірний масив і виділення на нього пам'яті
 
-	AddNewRow(arr, rows, cols, index, newRow);
+	FillNewArr(newRow2, cols);
+	AddNewRow(arr, rows, cols, index, newRow2);
 	rows++;
 	Print(arr, rows, cols);
-
+	cout << endl;
+	cout << "================ Add new column =============" << endl;
+	
+	int* newCol = new int[rows];   // створюємо посилання на новий одновимірний  масив колонки
+	FillNewArr(newCol, rows);
+	AddColumn(arr, newCol, rows, cols);
+	cols++;
+	Print(arr, rows, cols);
+	cout << endl;
+	cout << "================ Delete index column =============" << endl;
+	IndexColDel(arr, rows, cols);
+	cols--;
+	Print(arr, rows, cols);
+	cout << endl;
+	cout << "================ Add index col =============" << endl;
+	int* newCol2 = new int[rows];   // створюємо посилання на новий одновимірний  масив колонки
+	FillNewArr(newCol2, rows);
+	AddIndexCol(arr, newCol2, rows, cols);
+	cols++;
+	Print(arr, rows, cols);
 	Delete(arr, rows);
 	delete[] arr;
 
