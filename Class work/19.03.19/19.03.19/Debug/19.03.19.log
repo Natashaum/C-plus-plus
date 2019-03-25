@@ -1,3 +1,4 @@
 ﻿  Source.cpp
-c:\users\111\desktop\c++\c ++\class work\19.03.19\19.03.19\source.cpp(43): warning C4018: '<': signed/unsigned mismatch
-  19.03.19.vcxproj -> C:\Users\111\Desktop\C++\C ++\Class work\19.03.19\Debug\19.03.19.exe
+D:\Програмування Наташа\New projects November 2019\Lesson 22 gibush\Class work\19.03.19\19.03.19\Source.cpp(115): warning C4018: '<': signed/unsigned mismatch
+D:\Програмування Наташа\New projects November 2019\Lesson 22 gibush\Class work\19.03.19\19.03.19\Source.cpp(126): warning C4018: '<': signed/unsigned mismatch
+  19.03.19.vcxproj -> D:\Програмування Наташа\New projects November 2019\Lesson 22 gibush\Class work\19.03.19\Debug\19.03.19.exe

@@ -9,7 +9,7 @@ using namespace std;
 string GetDataFromNBU() {
 	return "Data from NBU";
 }
-string GetDataFromSW() {   
+string GetDataFromSW() {
 	return "Data from SW";
 }
 void ShowInfo(string(*FunkPtr)()) {   //  *FunkPtr -  вказівник на ф-ю (Ptr - pointer)
@@ -26,7 +26,7 @@ int main() {
 //                              функція smaller(int, int) – навпаки, повертає true, якщо перше менше другого.
 // Написати функцію sort_arr(int *array, int size, bool(*f)(int, int)) для впорядкування масиву.Функція отримує масив та вказівник на логічну функцію, яка буде задавати порядок сортування.
 // Так, наприклад, при передачі у функцію sort_arr() третім аргументом адреси функції bigger, масив впорядкується по зростанню, а при передачі адреси функції smaller, масив впорядкується по спаданню.
- 
+
 /*void FillArr(int *arr, const int SIZE) {
 	for (int i = 0; i < SIZE; i++) {
 		arr[i] = rand() % 10 + 1;
@@ -119,20 +119,31 @@ int main() {
 //      Наприкінці тексту ставиться крапка. Текст містить не більш 255 символів
 int main() {
 	char text[255];
-	
+	bool isSpace = false;
+
 	cout << "Enter text! " << endl;
-	/*cin >> text;*/
 	cin.getline(text, 255);
 	for (int i = 0; i < strlen(text); i++) {
-		if (text[i] == 32) {
-			cout << i <<endl;
+		if (text[i] == 32 && !isSpace) {
+			cout << endl;
+			isSpace = true;
+		}
+		else if(text[i] == 32)
+		{
+			continue;
 		}
 		else if (text[i] == 46) {
 			break;
 		}
+		else
+		{
+			cout << text[i];
+			isSpace = false;
+		}
 	}
-	
+	cout << endl;
+
 
 	system("pause");
 	return 0;
- }
+}
