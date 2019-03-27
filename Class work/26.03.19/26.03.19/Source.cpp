@@ -135,22 +135,49 @@ struct Animal {
 	string name;
 	string animalType;
 	string nickName;
+	string voice;
+
 	void ShowInfo() {
-		cout << "Name:  " << name << "\nType of animal:  " << animalType << "\nnickName:  " << nickName;
-	}
-	void Voice (){
-		cout << "Bark";
+		cout << "Name:            " << name << "\nType of animal:  " << animalType << "\nNickName:        " << nickName;
 	}
 
+	void Voice()
+	{
+		cout << "Voice:           "<< voice;
+	}
 };
 
 
 int main() {
-	Animal Murchyk;
-	Murchyk.name = "Murchyk";
+	Animal cat;
+	cat.name = "Murchyk";
+	cat.animalType = "Mammal";
+	cat.nickName = "Mur Mur";
+	cat.voice = "Meow";
+	cat.ShowInfo ();
+	cout << endl;
+	cat.Voice();
+	cout << endl<<endl;
 
+	Animal dog;
+	dog.name = "Rex";
+	dog.animalType = "Mammal";
+	dog.nickName = "Bark";
+	dog.voice = "Bark, bark";
+	dog.ShowInfo();
+	cout << endl;
+	dog.Voice();
+	cout << endl<<endl;
 
-
+	Animal fox;
+	fox.name = "Red Fox";
+	fox.animalType = "Mammal";
+	fox.nickName = "Red";
+	fox.voice = "Bark";
+	fox.ShowInfo();
+	cout << endl;
+	fox.Voice();
+	cout << endl<<endl;
 	system("pause");
 	return 0;
 }
