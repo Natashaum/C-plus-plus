@@ -22,7 +22,7 @@ using namespace std;
 
 /*int main() {
 	// зчитування файла
-	ifstream readFile; 
+	ifstream readFile;
 	string path = "DB.TXT";
 	readFile.open(path);
 	if (!readFile.is_open()){
@@ -47,7 +47,7 @@ using namespace std;
 
 // Зробити мінімальний довідник. Ф-ю додавання і вивід інформації на екран. За допомогою файлів.
 
-void People() {
+void AddPerson() {
 	string name;
 	string surname;
 	string address;
@@ -64,21 +64,44 @@ void People() {
 	cout << "==================================================" << endl;
 
 	string path = "ll.TXT";
-	ofstream writeFile;
-	writeFile.open(path, ofstream::app);
+	ofstream writeFile;      //ofstream - клас, який входить в бібліотеку <fstream> // writeFile - об'єкт класу ofstream
+	writeFile.open(path, ofstream::app); // ofstream::app   - Дописує до написаного
 	if (!writeFile.is_open()) {
 		cout << "Can't open file!" << endl;
 	}
 	else {
-		for (;;) {
-			writeFile << People << endl;
-		}
+
+		writeFile << "Person." << endl;              // якщо ми пишемо замість cout  змінну  writeFile, то інформація записується у файл
+		writeFile << " Name: " << name << endl;
+		writeFile << " Surname: " << surname << endl;
+		writeFile << " Address: " << address << endl;
+		writeFile << " Tel. Num.: " << telNum << endl;
+
 	}
 	writeFile.close();
 }
 
+void ShowPeople() {
+	// зчитування файла
+	ifstream readFile;
+	string path = "ll.TXT";
+	readFile.open(path); //Відкриваємо файл для зчитування за допомогою функції open
+	if (!readFile.is_open()) {
+		cout << "Can't open file!" << endl;
+	}
+	else {
+		string data;
+		while (!readFile.eof()) {  //eof - працює до кінця файлу
+			getline(readFile, data); // getline виконує ту ж ф-ю що і 	readFile >> data; але враховуючи пробіли.
+			cout << data << endl;
+		}
+	}
+	readFile.close();
+}
+
 int main() {
-	People();
+	AddPerson();
+	ShowPeople();
 	system("pause");
 	return 0;
 }
