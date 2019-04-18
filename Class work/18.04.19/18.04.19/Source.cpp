@@ -7,17 +7,17 @@ using namespace std;
 //Пользователь вводит число. Если оно больше 0 записываем его в массив.
 //Далее пользователь вводит второе число, тут уже, если оно больше 0, надо перевыделять память для 2 - х элементов массива и записать в массив второе число.
 //И так далее…  для 3 - х элементов, для 4 - х…  пока пользователь не введет отрицательное число.
-void Fill(int *arr, int const size) {
+void Fill(int *&arr, int  size) {   // посилання подаємо тоді, коли ми змінюємо дані (заповнюємо масив)
 	for (int i = 0; i < size; i++) {
 		arr[i] = rand() % 30;
 	}
 }
-void Print(int *arr,  int const size) {
+void Print(int *arr,  int  size) {
 	for (int i = 0; i < size; i++) {
 		cout << arr[i] << "\t";
 	}
 }
-void AddElement(int *arr, int size, int value)
+void AddElement(int *&arr, int size, int value)
 {
 	int* newarr = new int[size + 1];  
 	for (int i = 0; i < size; i++) {
@@ -32,26 +32,29 @@ int main()
 {
 	srand(unsigned(time(NULL)));
 
-	int const size = 1;
-	int arr[size];
+	int  size = 1;
+	int* arr = new int[size];   // arr змінна масиву під яку ми виділяємо пам'ять
 	int value = 0;
+	bool PlusNumer = false;
 
-	int* newarr = new int[size];
 	Fill(arr, size);
-	Print(arr, size);
-	cout << endl;
 
-	cout << "Enter the array you want to add:   ";
-	cin >> value;
-	
+	while (true) {
+		Print(arr, size);
+		cout << endl;
+
+		cout << "Enter the array you want to add:   ";
+		cin >> value;
+
 		if (value > 0) {
-			AddElement(arr, size + 1, value);
-			Print(arr, size);
+			AddElement(arr, size, value);
+			size++;
 		}
 		else {
-			cout << "The number is < 0! ";
+			cout << "The number is < 0! " << endl;
+			break;
 		}
-		
+	}
 	delete[]arr;
 	system("pause");
 	return 0;
