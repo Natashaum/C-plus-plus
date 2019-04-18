@@ -51,7 +51,7 @@ int main()
 			size++;
 		}
 		else {
-			cout << "The number is < 0! " << endl;
+			cout << "\nThe number is Less than Zero or Equal to Zero! \n" << endl;
 			break;
 		}
 	}
