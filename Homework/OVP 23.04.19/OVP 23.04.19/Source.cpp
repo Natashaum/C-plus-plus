@@ -1,55 +1,6 @@
 ﻿#include <iostream>
 #include <string>
 using namespace std;
-/*class car {
-public:
-	string model;
-	float power;
-	string colour;
-	int weight;
-	string RegNumber;
-
-	void ShowCarInfo() {  // маємо робити в середині класу
-		cout << "Model:    " << model << "\nPower:    " << power << "\nWeight:   " << weight << "\nRegNumber:" << RegNumber << endl;  // замість cout в int
-
-	}
-};
-
-
-int main() {
-	cout << "Mersedes" << "\n-------------------------------------------" << endl;
-	car Mersedes;  //car - клас, Mersedes - об'єкт класу
-	Mersedes.model = "A 140";
-	Mersedes.power = 1.6;
-	Mersedes.weight =1500;
-	Mersedes.RegNumber = "1200 AA";
-	Mersedes.ShowCarInfo();
-	////cout << "Model:    " << Mersedes.model << "\nPower:    " << Mersedes.power << "\nWeight:   " << Mersedes.weight << "\nRegNumber:" << Mersedes.RegNumber << endl;
-	cout << "============================================" << endl;
-	cout << "Mersedes" << "\n-------------------------------------------" << endl;
-	Mersedes.model = "280"; //при зміні даних, виводиться на екран нові дані
-
-	Mersedes.ShowCarInfo();
-	////cout << "Model:    " << Mersedes.model << endl;
-
-	cout << "=============================================" << endl;
-	cout << "BMV" << "\n-------------------------------------------" << endl;
-	car BMV;  //car - клас, Mersedes - об'єкт класу
-	BMV.model = "A 150";
-	BMV.power = 2.5;
-	BMV.weight = 2000;
-	BMV.RegNumber = "1200 BA";
-	BMV.ShowCarInfo();
-
-	cout << "=============================================" << endl;
-	cout << "BMV" << "\n-------------------------------------------" << endl;
-	BMV.power = 3.1;
-	BMV.ShowCarInfo();
-	cout << "=============================================" << endl;
-	system("pause");
-	return 0;
-}*/
-
 
 //ООП
 //Завдання 2. Домашнє завдання
@@ -62,37 +13,119 @@ int main() {
 //Знімати гроші з рахунку
 //Докладати гроші на рахунок
 class BankAccount {
+private:
+	string accountNumber;
+	string name;
+	string surname;
+	int money;
+	string currency;
 public:
-	int accountNumber;
-	string userName;
-	string userSurname;
-	int sumMoney;
-	string moneyName;
 	void ShowInfo() {
-		cout << "Account number:        " << accountNumber << "\nUser name:             " << userName << "\nUser surname:          " << userSurname <<"\nAmount of money:       " << sumMoney << "\nThe name of currency:  " << moneyName << endl;
+		cout << "Account number:         " << accountNumber << "\nUser name:              " << name << "\nUser surname:           " << surname <<"\nBalance:                " << money << "\nThe name of currency:   " << currency << endl;
 	}
+	void ShowBalance() {
+		cout << "Balance:   " << money << currency << endl;
+	}
+	void SetAccountNum(string newAccountNum) {
+		accountNumber = newAccountNum;
+	}
+	void SetName(string newName) {
+		name = newName;
+	}
+	void SetSurname(string newSurname) {
+		surname = newSurname;
+	}
+	void SetCurrency(string newCurrency) {
+		currency = newCurrency;
+	}
+	void SetMoney(int newMoney)
+	{
+		money = newMoney;
+	}
+	void AddMoney(int addMoney)
+	{
+		money += addMoney;
+	}
+	void SubMoney(int subMoney)
+	{
+		money -= subMoney;
+	}
+	int GetMoney()
+	{
+		return money;
+	}
+
 };
 
 
 
 int main() {
-	BankAccount account;
-	account.accountNumber = 555777888;
-	account.userName = "Anna";
-	account.userSurname = "Glain";
-	account.sumMoney = 10500;
-	account.moneyName = "HRN";
-	account.ShowInfo();
+	string UserAccountNum;
+	string username;
+	string userSurname;
+	string currency;
+	int money = 0;
+	int addMoney;
+	int subMoney;
+	cout << " Enter your account number:\n";
+	cin >> UserAccountNum;
+	cout << " Enter Username:\n";
+	cin >> username;
+	cout << " Enter user Surname:\n";
+	cin >> userSurname;
+	cout << " Enter amount of money:\n";
+	cin >> money;
+	cout << " Enter currency:\n";
+	cin >> currency;
+	BankAccount User;
+	User.SetAccountNum(UserAccountNum);
+	User.SetName(username);
+	User.SetSurname(userSurname);
+	User.SetMoney(money);
+	User.SetCurrency(currency);
+	cout << "====================================================\n";
+	User.ShowInfo();
+	cout << "====================================================\n";
+	for (;;) {
+		int choice;
+		
+		cout << " Press:\n1 - To watch your balance\n2 - To Add Money\n3 - To Subtract Money\n0 - To Exit!" << endl;
+		cin >> choice;
+		if (choice == 0) {
+			break;
+		}
+		switch (choice) {
+		
+		case 1:
+			cout << " Your current balance is:\n";
+			User.SetMoney(money);
+			cout << "--------------------------------" << endl;
+			User.ShowBalance();
+			break;
 
-	BankAccount account;
-	account.accountNumber = 111333222;
-	account.userName = "Tom";
-	account.userSurname = "Tomson";
-	account.sumMoney = 5000;
-	account.moneyName = "$";
-	account.ShowInfo();
-
-	
+		case 2:
+			cout << " Enter amount of money you want to Add:\n";
+			cin >> addMoney;
+			User.AddMoney(addMoney);
+			cout << "--------------------------------" << endl;
+			User.ShowInfo();
+			break;
+		case 3: 
+			cout << " Enter amount of money you want to Subtract:\n";
+			cin >> subMoney;
+			if (User.GetMoney() < subMoney) {
+				cout << " There is not enough money!" << endl;
+			}
+			else  {
+				User.SubMoney(subMoney);
+				cout << "--------------------------------" << endl;
+				User.ShowInfo();
+			}
+			break;
+		}
+		system("pause");
+		system("cls");
+	}
 	system("pause");
 	return 0;
 }
