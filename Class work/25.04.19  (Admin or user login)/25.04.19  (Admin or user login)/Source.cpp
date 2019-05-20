@@ -35,6 +35,7 @@ void CheckUser() {
 				cout << "Login is correct!" << endl;;
 
 			}
+			getline(readFile, data);
 			if (data == password) {
 				cout << data << endl;
 				cout << "Password is correct!" << endl;
