@@ -122,8 +122,7 @@ double AveragePoint(int points, int games) {
 	return points / games;
 }
 void Fill(Player& player) {
-	const int size = 4;
-	for (double i = 0; i < size; i++) {
+	
 		cout << "Enter player's name:  ";
 		cin >> player.name;
 		cout << "\nEnter player's surname:  ";
@@ -136,9 +135,8 @@ void Fill(Player& player) {
 		cin >> player.points;
 		player.avgPointsPerGame = AveragePoint(player.points, player.games);
 		cout << endl;
-	}
 }
-void SaveInFile(const Player& player) {
+void SaveInFile(Player* player, int size) {
 	ofstream out;  // out назва змінної
 	out.open("file.txt", ios_base::out); //ios_base - клас зчитує режим
 	if (!out.is_open()) {
@@ -154,35 +152,39 @@ void SaveInFile(const Player& player) {
 			out << player[i].points << endl;
 			out << player[i].avgPointsPerGame << endl;
 		}
+		out.close();
 	}
-	out.close();
 }
 
 
-void LoudFromFile(Player& player) {
+void LoudFromFile(Player * player, int size) {
 	ifstream in;
 	in.open("file.txt", ios_base::in);
 	if (!in.is_open()) {
 		cout << "Can't open file!" << endl;
 	}
 	else {
-		in >> player.name;
-		in >> player.surname;
-		in >> player.age;
-		in >> player.games;
-		in >> player.points;
-		in >> player.avgPointsPerGame;
+		for (int i = 0; i < size; i++) {
+			in >> player[i].name;
+			in >> player[i].surname;
+			in >> player[i].age;
+			in >> player[i].games;
+			in >> player[i].points;
+			in >> player[i].avgPointsPerGame;
+		}
 		in.close();
 	}
 }
 int main() {
 
-	Player player;
-
-	Fill(player);
-	Show(player);
-	SaveInFile(player);
-	LoudFromFile(player);
+	const int size = 10;
+	Player player[5];
+	for (int i = 0; i < size; i++) {
+		Fill(player[0]);
+	}
+	Show(player[0]);
+	SaveInFile(player, size);
+	LoudFromFile(player, size);
 
 	system("pause");
 	return 0;

@@ -1,0 +1,5 @@
+﻿  main.cpp
+c:\users\111\desktop\c++\new course\ovp\classwork №1 . course 2\task 2\main.cpp(43): warning C4018: '<': signed/unsigned mismatch
+c:\users\111\desktop\c++\new course\ovp\classwork №1 . course 2\task 2\main.cpp(207): warning C4018: '<': signed/unsigned mismatch
+c:\users\111\desktop\c++\new course\ovp\classwork №1 . course 2\task 2\main.cpp(240): warning C4101: 'balance': unreferenced local variable
+  Task 2.vcxproj -> C:\Users\111\Desktop\C++\New Course\OVP\Classwork №1 . Course 2\Debug\Task 2.exe
